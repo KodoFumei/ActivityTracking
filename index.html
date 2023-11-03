@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Activity Tracker</title>
+</head>
+<body>
+    <h1>Activity Tracker</h1>
+    <div class="form-container">
+        <label for="activity">Activity:</label>
+        <select id="activity-select">
+            <option value="gym">Gym</option>
+            <option value="biking">Biking</option>
+            <option value="swimming">Swimming</option>
+            <option value="running">Running</option>
+            <option value="custom">Custom Activity</option>
+        </select>
+        <input type="text" id="custom-activity" placeholder="Enter custom activity" style="display: none">
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        <label for="duration">Duration (in minutes):</label>
+        <input type="number" id="duration" placeholder="Enter minutes" required>
+        <button id="add-activity">Add Activity</button>
+    </div>
+    <div class="activity-list">
+        <h2>Activity List</h2>
+        <ul id="activity-list">
+        </ul>
+        <p>Total Duration: <span id="total-duration">0</span> </p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
