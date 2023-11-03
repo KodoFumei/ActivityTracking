@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
 </head>
+
 <body>
     <h1>Activity Tracker</h1>
     <div class="form-container">
         <label for="activity">Activity:</label>
         <select id="activity-select">
-            <option value="gym">Gym</option>
-            <option value="biking">Biking</option>
-            <option value="swimming">Swimming</option>
-            <option value="running">Running</option>
-            <option value="custom">Custom Activity</option>
+            <option value="Gym">Gym</option>
+            <option value="Biking">Biking</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Running">Running</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Custom">Custom Activity</option>
         </select>
         <input type="text" id="custom-activity" placeholder="Enter custom activity" style="display: none">
         <label for="date">Date:</label>
@@ -30,6 +34,22 @@
         </ul>
         <p>Total Duration: <span id="total-duration">0</span> </p>
     </div>
+    <div class="category">
+        <label for="category-select">Select a category: </label>
+        <select id="category-select">
+            <option value="">All Categories</option>
+            <option value="Gym">Gym</option>
+            <option value="Biking">Biking</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Running">Running</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Custom">Custom Activity</option>
+        </select>
+        <button id="show-hours-button">Show Hours</button>
+        <div id="hours-spent"></div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
