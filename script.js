@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 customActivityInput.value = "";
             }
+            activitySelect.value = "choose";
             dateInput.value = "";
             durationInput.value = "";
             durationInput.classList.remove("error-highlight");
