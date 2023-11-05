@@ -20,15 +20,14 @@ Activity list will automatically put activities on the chronological order, so u
 
 ## Contributing
 
-Planned add ons for the project: 
+Any issues, bugs or feature requests can be sent via github repository.
+
+Up coming improvements for the project: 
 User beneficial:
 - When user adds activities for the future, make chekc-box to mark it done when activity completed.
 - Edit button for the activity list, for duration changes.
-- 
+
 Design beneficial:
-- Activity list to be scroll down- menu.
+- Activity list to be scroll down-menu.
 
-- 
-## License
 
-Specify the open-source license.
