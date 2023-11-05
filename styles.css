@@ -1,12 +1,12 @@
 body {
     background-color: #0e64b4;
-    font-family: Monaco, monospace;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
 h1,h2 {
     color: #F3CF1A;
-    ;
+    letter-spacing: -1px;
 }
 
 .form-container {
@@ -16,11 +16,12 @@ h1,h2 {
     align-items: center;
 }
 
-label, input {
+label,
+input {
     margin: 5px 0;
 }
 
-button { /*add activity-button */
+button {
     font-size: 15px;
     margin-top: 10px;
     background-color: #4c51f7;
@@ -46,19 +47,20 @@ ul {
 li {
     background-color: #5FCEEA;
     border: 3px solid #ffffff;
-    padding: 10px;
-    margin: 8px 0;
+    font-size: 14px;
+    padding: 3px;
+    margin: 6px 0;
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Spread items horizontally */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-li button { /*delete-button*/
+li button { /*delete button */
     background-color: #4c51f7;
     font-size: 12px;
-    color: #5FCEEA; /*text color*/
+    color: #5FCEEA;
     border: 1px solid #000000;
     padding: 5px 5px;
     margin: 2px 10px;
@@ -69,6 +71,24 @@ p {
     margin: 10px 0;
 }
 
-#total-duration {
+.total-duration {
     font-weight: bold;
+}
+
+h3 {
+    color: #F3CF1A;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 1px;
+    ;
+}
+
+#hours-spent {
+    background-color: #5FCEEA;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 20px;
 }
