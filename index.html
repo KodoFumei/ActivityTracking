@@ -13,19 +13,20 @@
     <div class="form-container">
         <label for="activity">Activity:</label>
         <select id="activity-select">
+            <option value="choose">Choose Activity</option>
             <option value="Gym">Gym</option>
             <option value="Biking">Biking</option>
             <option value="Swimming">Swimming</option>
             <option value="Running">Running</option>
             <option value="Work">Work</option>
             <option value="Study">Study</option>
-            <option value="Custom">Custom Activity</option>
+            <option value="custom">Custom Activity</option>
         </select>
         <input type="text" id="custom-activity" placeholder="Enter custom activity" style="display: none">
         <label for="date">Date:</label>
         <input type="date" id="date" required>
         <label for="duration">Duration (in minutes):</label>
-        <input type="number" id="duration" placeholder="Enter minutes" required>
+        <input type="number" id="duration" required>
         <button id="add-activity">Add Activity</button>
     </div>
     <div class="activity-list">
@@ -35,6 +36,7 @@
         <p>Total Duration: <span id="total-duration">0</span> </p>
     </div>
     <div class="category">
+    <h3>Weekly Activity Summary:</h3>
         <label for="category-select">Select a category: </label>
         <select id="category-select">
             <option value="">All Categories</option>
