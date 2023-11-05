@@ -31,4 +31,7 @@ User beneficial:
 Design beneficial:
 - Activity list to be scroll down-menu.
 
+##Author and acknowledgment
+Created and owned by Johanna Salovaara
+
 
