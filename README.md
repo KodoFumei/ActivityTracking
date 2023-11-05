@@ -22,6 +22,7 @@ Activity list will automatically put activities on the chronological order, so u
 ## Contributing
 
 Any issues, bugs or feature requests can be sent via github repository.
+GitHub address: https://github.com/KodoFumei/ActivityTracking.git
 
 Up coming improvements for the project: 
 User beneficial:
