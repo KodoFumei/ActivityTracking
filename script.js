@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         activityList.innerHTML = "";
         let totalMinutes = 0;
 
+        /* Sort activities by date in ascending order (oldest to newest) */
+        activities.sort((a, b) => new Date(a.date) - new Date(b.date));
+
         activities.forEach((activity, index) => {
             const li = document.createElement("li");
             li.innerHTML = `${activity.date} - ${activity.activity} - ${activity.duration} minutes`;
@@ -60,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(message);
     }
 
-    updateActivityList(); /*change1. */
+    updateActivityList();
 
     activitySelect.addEventListener("change", function () {
         if (activitySelect.value === "custom") {
@@ -68,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             customActivityInput.style.display = "none";
         }
-
-        
     });
 
     addActivityButton.addEventListener("click", function () {
@@ -80,7 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const date = dateInput.value;
         const duration = durationInput.value;
 
-        if (activitySelect.value === "custom" && customActivityInput.value === "") {
+        if (activitySelect.value === "choose") {
+            showErrorAlert("Please choose activity.");
+        } else if (activitySelect.value === "custom" && customActivityInput.value === "") {
             showErrorAlert("Please enter a custom activity.");
             customActivityInput.classList.add("error-highlight");
         } else if (!date) {
@@ -109,22 +112,63 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    /* Define the getWeekNumber function */
+    function getWeekNumber(date) {
+        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    }
     showHoursButton.addEventListener("click", function () {
         const selectedCategory = categorySelect.value;
-        let categoryTotalMinutes = 0;
+        const selectedCategoryActivities = activities.filter(activity =>
+            selectedCategory === "" || activity.activity === selectedCategory
+        );
 
-        activities.forEach((activity) => {
-            if (selectedCategory === "" || activity.activity === selectedCategory) {
-                categoryTotalMinutes += parseInt(activity.duration);
-            }
+        const groupedActivities = groupActivitiesByWeek(selectedCategoryActivities);
+
+        let categoryTotalMinutes = 0;
+        let message = `Hours spent in ${selectedCategory}:\n`;
+
+        /* Iterate through the grouped activities */
+        groupedActivities.forEach((group, weekNumber) => {
+            const weekTotalMinutes = group.reduce((total, activity) => total + parseInt(activity.duration), 0);
+            categoryTotalMinutes += weekTotalMinutes;
+
+            const weekHours = Math.floor(weekTotalMinutes / 60);
+            const weekMinutes = weekTotalMinutes % 60;
+
+            message += `Week ${weekNumber}: ${weekHours} hours ${weekMinutes} minutes\n`;
         });
 
         const categoryHours = Math.floor(categoryTotalMinutes / 60);
         const categoryMinutes = categoryTotalMinutes % 60;
 
-        hoursSpent.innerText = `Hours spent in ${selectedCategory}: ${categoryHours} hours ${categoryMinutes} minutes`;
+        message += `\nTotal: ${categoryHours} hours ${categoryMinutes} minutes`;
+
+        hoursSpent.innerText = message;
+
+        categorySelect.scrollIntoView({ behavior: "smooth" });
+        categorySelect.value = "";
+
     });
 
-    updateActivityList();
+    /* Helper function to group activities by week */
+    function groupActivitiesByWeek(activities) {
+        const groupedActivities = new Map();
+
+        activities.forEach((activity) => {
+            const weekNumber = getWeekNumber(new Date(activity.date));
+
+            if (!groupedActivities.has(weekNumber)) {
+                groupedActivities.set(weekNumber, []);
+            }
+
+            groupedActivities.get(weekNumber).push(activity);
+        });
+
+        return groupedActivities;
+    }
+
 });
 
