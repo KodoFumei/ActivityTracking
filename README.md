@@ -4,6 +4,7 @@ User can save different activities and durations to local storage. User has poss
 
 ## Installation
 no installation needed.
+https://trackingjunior.netlify.app
 
 ## Usage
 
